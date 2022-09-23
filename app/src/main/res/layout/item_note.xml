@@ -6,6 +6,7 @@
     style="@style/MyCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -33,7 +34,9 @@
             android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:lines="1"
+            android:textColor="@color/grey"
             android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="Description note" />
 
@@ -44,6 +47,7 @@
             android:layout_marginTop="20dp"
             android:ellipsize="end"
             android:lines="1"
+            android:textColor="@color/grey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description"

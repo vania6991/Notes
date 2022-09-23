@@ -1,15 +1,12 @@
-package ua.yaremchuk.notes.presentation.screens
+package ua.yaremchuk.notes.presentation
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import ua.yaremchuk.notes.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val viewModel by viewModels<MainViewModel>()
 
     private lateinit var binding: ActivityMainBinding
 

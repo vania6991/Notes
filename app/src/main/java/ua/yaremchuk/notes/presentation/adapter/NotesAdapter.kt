@@ -17,6 +17,8 @@ class NotesAdapter() :
             notifyDataSetChanged()
         }
 
+    var noteActionListener: NoteActionListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemNoteBinding.inflate(inflater, parent, false)
@@ -28,8 +30,14 @@ class NotesAdapter() :
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val note = note[position]
         with(holder.binding) {
+            title.text = note.title
+            description.text = note.description
+            date.text = note.date
             holder.itemView.tag = note
 
+            root.setOnClickListener {
+                noteActionListener?.onOpenEditNote(note)
+            }
         }
     }
 
@@ -38,5 +46,11 @@ class NotesAdapter() :
     class NotesViewHolder(
         val binding: ItemNoteBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
+    interface NoteActionListener {
+
+        fun onOpenEditNote(note: Note)
+
+    }
 
 }

@@ -6,7 +6,7 @@
     app:startDestination="@id/notesFragment">
     <fragment
         android:id="@+id/notesFragment"
-        android:name="ua.yaremchuk.notes.presentation.screens.notes.NotesFragment"
+        android:name="ua.yaremchuk.notes.presentation.screens.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/editNoteFragment"
-        android:name="ua.yaremchuk.notes.presentation.screens.edit.EditNoteFragment"
+        android:name="ua.yaremchuk.notes.presentation.screens.EditNoteFragment"
         android:label="fragment_edit_note"
         tools:layout="@layout/fragment_edit_note" />
 </navigation>
