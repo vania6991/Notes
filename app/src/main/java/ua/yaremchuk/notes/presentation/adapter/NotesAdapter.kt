@@ -36,7 +36,7 @@ class NotesAdapter() :
             holder.itemView.tag = note
 
             root.setOnClickListener {
-                noteActionListener?.onOpenEditNote(note)
+                noteActionListener?.onOpenEditNote(note.id)
             }
         }
     }
@@ -49,7 +49,7 @@ class NotesAdapter() :
 
     interface NoteActionListener {
 
-        fun onOpenEditNote(note: Note)
+        fun onOpenEditNote(noteId: Int)
 
     }
 

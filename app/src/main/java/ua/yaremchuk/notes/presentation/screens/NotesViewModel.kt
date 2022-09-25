@@ -14,7 +14,7 @@ import ua.yaremchuk.notes.domain.Note
 import javax.inject.Inject
 
 @HiltViewModel
-class SharedViewModel @Inject constructor(
+class NotesViewModel @Inject constructor(
     private val notesRepository: NotesRepository
 ) : ViewModel() {
 
@@ -34,7 +34,6 @@ class SharedViewModel @Inject constructor(
         set(value) {
             descriptionLiveData.value = value
         }
-
 
     init {
         viewModelScope.launch {

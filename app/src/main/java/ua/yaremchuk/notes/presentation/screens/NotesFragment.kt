@@ -3,7 +3,7 @@ package ua.yaremchuk.notes.presentation.screens
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +17,7 @@ import java.util.*
 @AndroidEntryPoint
 class NotesFragment() : Fragment(R.layout.fragment_notes), NotesAdapter.NoteActionListener {
 
-    private lateinit var viewModel: SharedViewModel
+    private val viewModel by viewModels<NotesViewModel>()
 
     private lateinit var binding: FragmentNotesBinding
     private lateinit var adapter: NotesAdapter
@@ -25,8 +25,6 @@ class NotesFragment() : Fragment(R.layout.fragment_notes), NotesAdapter.NoteActi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNotesBinding.bind(view)
-
-        viewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         adapter = NotesAdapter()
 
@@ -42,7 +40,7 @@ class NotesFragment() : Fragment(R.layout.fragment_notes), NotesAdapter.NoteActi
             it?.let { adapter.note = it }
         }
 
-        binding.fab.setOnClickListener {
+        binding.fabAdd.setOnClickListener {
             onAddNoteButtonPressed()
         }
     }
@@ -57,7 +55,8 @@ class NotesFragment() : Fragment(R.layout.fragment_notes), NotesAdapter.NoteActi
         viewModel.addNewNote(note)
     }
 
-    override fun onOpenEditNote(note: Note) {
-        findNavController().navigate(R.id.action_notesFragment_to_editNoteFragment)
+    override fun onOpenEditNote(noteId: Int) {
+        val direction = NotesFragmentDirections.actionNotesFragmentToEditNoteFragment(noteId)
+        findNavController().navigate(direction)
     }
 }

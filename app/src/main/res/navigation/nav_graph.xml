@@ -17,5 +17,9 @@
         android:id="@+id/editNoteFragment"
         android:name="ua.yaremchuk.notes.presentation.screens.EditNoteFragment"
         android:label="fragment_edit_note"
-        tools:layout="@layout/fragment_edit_note" />
+        tools:layout="@layout/fragment_edit_note" >
+        <argument
+            android:name="noteId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

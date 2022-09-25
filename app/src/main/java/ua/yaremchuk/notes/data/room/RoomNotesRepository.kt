@@ -31,4 +31,8 @@ class RoomNotesRepository @Inject constructor(
         val entity = NoteDbEntity.fromNote(note)
         noteDao.updateNote(entity)
     }
+
+    override fun getNoteById(noteId: Int): Flow<Note> {
+        return noteDao.getById(noteId).map { it.toNote() }
+    }
 }
